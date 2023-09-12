@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "769317691071",
+    "project_id": "hero-2f27c",
+    "storage_bucket": "hero-2f27c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:769317691071:android:e9895cc9a875576d17f00a",
+        "android_client_info": {
+          "package_name": "com.topbusiness.hero"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpGesQ05n5SzkAXQisrPZ005VpOdGDmVE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:769317691071:android:b6d04e9e78bbc80a17f00a",
+        "android_client_info": {
+          "package_name": "com.topbusiness.herodriver"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpGesQ05n5SzkAXQisrPZ005VpOdGDmVE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

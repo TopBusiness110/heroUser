@@ -1,0 +1,7 @@
+allprojects {
+    repositories.all {
+        if (url.host == 'jcenter.bintray.com') {
+            new Throwable('jcenter repository was just added').printStackTrace()
+        }
+    }
+}
