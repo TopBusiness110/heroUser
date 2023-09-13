@@ -86,6 +86,8 @@ class _LoadingPageState extends State<LoadingPage> {
   }
 
   getData() async {
+    package = await PackageInfo.fromPlatform();
+
     for (var i = 0; _error == true; i++) {
       await getLanguageDone();
     }
@@ -96,7 +98,16 @@ class _LoadingPageState extends State<LoadingPage> {
     // var wallet = await FirebaseDatabase.instance.ref().child('enable_wallet').get();
     // print('wallet value is ${wallet.value}');
 
-    // package = await PackageInfo.fromPlatform();
+     package = await PackageInfo.fromPlatform();
+     // if (platform == TargetPlatform.android && package != null) {
+     //   await FirebaseDatabase.instance
+     //       .ref()
+     //       .update({'user_package_name': package.packageName.toString()});
+     // } else if (package != null) {
+     //   await FirebaseDatabase.instance
+     //       .ref()
+     //       .update({'user_bundle_id': package.packageName.toString()});
+     // }
     // try {
     //   if (platform == TargetPlatform.android) {
     //     _version = await FirebaseDatabase.instance

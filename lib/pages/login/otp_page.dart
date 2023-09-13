@@ -60,7 +60,8 @@ class _OtpState extends State<Otp> {
             context,
             MaterialPageRoute(builder: (context) => const Invoice()),
             (route) => false);
-      } else if (userRequestData.isNotEmpty &&
+      }
+      else if (userRequestData.isNotEmpty &&
           userRequestData['is_completed'] != 1) {
         Future.delayed(const Duration(seconds: 2), () {
           if (userRequestData['is_rental'] == true) {
@@ -86,7 +87,8 @@ class _OtpState extends State<Otp> {
                 (route) => false);
           }
         });
-      } else {
+      }
+      else {
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(builder: (context) => const Maps()),
@@ -220,7 +222,7 @@ class _OtpState extends State<Otp> {
                               ),
                               const SizedBox(height: 10),
                               Text(
-                                countries[phcode]['dial_code'] + phnumber,
+                               "+20" + phnumber,
                                 style: GoogleFonts.roboto(
                                     fontSize: media.width * sixteen,
                                     color: textColor,

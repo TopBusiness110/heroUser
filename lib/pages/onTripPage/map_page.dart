@@ -211,7 +211,7 @@ class _MapsState extends State<Maps>
         } else {
           addressList.add(AddressList(
               id: 'pickup',
-              address: val,
+              address: val??'',
               latlng:
                   LatLng(_centerLocation.latitude, _centerLocation.longitude)));
         }
