@@ -40,7 +40,7 @@ bool internet = true;
 //base url
 String url =
     'https://tagxi.topbusiness.io/'; //add '/' at the end of the url as 'https://yourwebsite.com/'
-String mapkey = 'AIzaSyA6QI378BHt9eqBbiJKtqWHTSAZxcSwN3Q';
+String mapkey = 'AIzaSyCZjDPvxg9h3IUSfVPzIwnKli5Y17p-v9g';
 
 //check internet connection
 
@@ -1199,6 +1199,10 @@ List etaDetails = [];
 etaRequest() async {
   dynamic result;
   try {
+    print(bearerToken[0].token);
+    print(userRequestData['pick_lng']);
+    print( addressList
+        .elementAt(0).latlng.latitude.toString());
     var response = await http.post(Uri.parse('${url}api/v1/request/eta'),
         headers: {
           'Authorization': 'Bearer ${bearerToken[0].token}',
@@ -1247,7 +1251,7 @@ etaRequest() async {
                         .longitude,
                 'ride_type': 1
               }));
-
+print(response.request.toString());
     if (response.statusCode == 200) {
       etaDetails = jsonDecode(response.body)['data'];
       choosenVehicle =

@@ -5585,7 +5585,7 @@ class _BookingConfirmationState extends State<BookingConfirmation>
                                           children: [
                                             Container(
                                               width: media.width * 0.5,
-                                              height: media.width * 0.12,
+                                              height: media.width * 0.25,
                                               decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
@@ -5593,7 +5593,7 @@ class _BookingConfirmationState extends State<BookingConfirmation>
                                               child: Row(
                                                 children: [
                                                   Container(
-                                                    height: media.width * 0.12,
+                                                    height: media.width * 0.25,
                                                     width: media.width * 0.12,
                                                     decoration: BoxDecoration(
                                                         borderRadius: (languageDirection ==
