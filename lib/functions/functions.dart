@@ -5,6 +5,7 @@ import 'dart:math';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_launcher_icons/utils.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:firebase_auth/firebase_auth.dart';
@@ -1597,6 +1598,7 @@ createRequestWithPromo() async {
 
 createRequestLater() async {
   dynamic result;
+  printStatus(etaDetails[choosenVehicle]['zone_type_id']);
   try {
     var response = await http.post(Uri.parse('${url}api/v1/request/create'),
         headers: {
@@ -1605,13 +1607,32 @@ createRequestLater() async {
         },
         body: jsonEncode({
           'pick_lat':
-              addressList.firstWhere((e) => e.id == 'pickup').latlng.latitude,
+              addressList.firstWhere((e) {
+                return e.id == 'pickup';
+
+              },
+              orElse: () {
+                return addressList.elementAt(0);
+              },
+              ).latlng.latitude,
           'pick_lng':
-              addressList.firstWhere((e) => e.id == 'pickup').latlng.longitude,
+              addressList.firstWhere((e) {
+                return e.id == 'pickup';
+              }, orElse: () {
+                return addressList.elementAt(0);
+              },).latlng.longitude,
           'drop_lat':
-              addressList.firstWhere((e) => e.id == 'drop').latlng.latitude,
+              addressList.firstWhere((e) {
+                return e.id == 'drop';
+              }, orElse: () {
+                return addressList.elementAt(0);
+              },).latlng.latitude,
           'drop_lng':
-              addressList.firstWhere((e) => e.id == 'drop').latlng.longitude,
+              addressList.firstWhere((e) {
+                return e.id == 'drop';
+              }, orElse: () {
+                return addressList.elementAt(0);
+              },).latlng.longitude,
           'vehicle_type': etaDetails[choosenVehicle]['zone_type_id'],
           'ride_type': 1,
           'payment_opt': (etaDetails[choosenVehicle]['payment_type']
@@ -1628,12 +1649,24 @@ createRequestLater() async {
                   ? 1
                   : 2,
           'pick_address':
-              addressList.firstWhere((e) => e.id == 'pickup').address,
-          'drop_address': addressList.firstWhere((e) => e.id == 'drop').address,
+              addressList.firstWhere((e) {
+                return e.id == 'pickup';
+              }, orElse: () {
+                return addressList.elementAt(0);
+              },).address,
+          'drop_address': addressList.firstWhere((e) {
+            return e.id == 'drop';
+          }, orElse: () {
+            return addressList.elementAt(0);
+          },).address,
           'trip_start_time': choosenDateTime.toString().substring(0, 19),
           'is_later': true,
           'request_eta_amount': etaDetails[choosenVehicle]['total']
         }));
+    print(";;;;;kkkjtytuutk");
+
+    print(response.statusCode.toString());
+    print(response.body.toString());
     if (response.statusCode == 200) {
       result = 'success';
       streamRequest();
@@ -1652,6 +1685,9 @@ createRequestLater() async {
       valueNotifierBook.incrementNotifier();
     }
   } catch (e) {
+    print(";;;;;kkkjk");
+    print(e.toString());
+
     if (e is SocketException) {
       result = 'no internet';
       internet = false;
@@ -1702,6 +1738,8 @@ createRequestLaterPromo() async {
           'is_later': true,
           'request_eta_amount': etaDetails[choosenVehicle]['total']
         }));
+    print(response.statusCode.toString());
+    print(response.body.toString());
     if (response.statusCode == 200) {
       myMarkers.clear();
       streamRequest();
@@ -1891,6 +1929,8 @@ createRentalRequestLater() async {
           'request_eta_amount': rentalOption[choosenVehicle]['fare_amount'],
           'rental_pack_id': etaDetails[rentalChoosenOption]['id']
         }));
+    print(response.statusCode.toString());
+    print(response.body.toString());
     if (response.statusCode == 200) {
       result = 'success';
       streamRequest();
@@ -1953,6 +1993,8 @@ createRentalRequestLaterPromo() async {
           'request_eta_amount': rentalOption[choosenVehicle]['fare_amount'],
           'rental_pack_id': etaDetails[rentalChoosenOption]['id'],
         }));
+    print(response.statusCode.toString());
+    print(response.body.toString());
     if (response.statusCode == 200) {
       myMarkers.clear();
       streamRequest();
@@ -2025,6 +2067,8 @@ class RequestCreate {
 //user cancel request
 
 cancelRequest() async {
+  print(";llppp");
+  print(userRequestData['id']);
   dynamic result;
   try {
     var response = await http.post(Uri.parse('${url}api/v1/request/cancel'),
