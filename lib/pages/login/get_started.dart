@@ -33,9 +33,9 @@ class _GetStartedState extends State<GetStarted> {
   String _permission = '';
 
   getGalleryPermission() async {
-    var status = await Permission.photos.status;
+    var status = await Permission.storage .status;
     if (status != PermissionStatus.granted) {
-      status = await Permission.photos.request();
+      status = await Permission.storage .request();
     }
     return status;
   }

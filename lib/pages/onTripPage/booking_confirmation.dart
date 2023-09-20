@@ -2209,8 +2209,10 @@ class _BookingConfirmationState extends State<BookingConfirmation>
                                                                   0.42
                                                               : media.width *
                                                                   0.9,
+
                                                           color: buttonColor,
-                                                          onTap: () async {
+                                                          onTap: ()  async {
+                                                            print("slldldl");
                                                             setState(() {
                                                               _isLoading = true;
                                                             });
@@ -2263,11 +2265,12 @@ class _BookingConfirmationState extends State<BookingConfirmation>
                                                             if (result ==
                                                                 'success') {
                                                               timer();
+                                                              setState(() {
+                                                                _isLoading =
+                                                                false;
+                                                              });
                                                             }
-                                                            setState(() {
-                                                              _isLoading =
-                                                                  false;
-                                                            });
+
                                                           },
                                                           text: languages[
                                                                   choosenLanguage]

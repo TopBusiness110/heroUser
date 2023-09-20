@@ -314,8 +314,8 @@ class _LoginState extends State<Login> {
                                           ?.unfocus();
                                     }
                                   },
-                                  maxLength: countries[phcode]
-                                      ['dial_max_length'],
+                                  // maxLength: countries[phcode]
+                                  //     ['dial_max_length'],
                                   style: GoogleFonts.roboto(
                                       fontSize: media.width * sixteen,
                                       color: textColor,
@@ -428,18 +428,18 @@ class _LoginState extends State<Login> {
                                     setState(() {
                                       _isLoading = true;
                                     });
-                                    var val = await otpCall();
-                                    if (val.value == true) {
-                                      phoneAuthCheck = true;
-                                      await phoneAuth(countries[phcode]
-                                              ['dial_code'] +
-                                          phnumber);
-
-                                      navigate();
-                                    } else {
+                                    // var val = await otpCall();
+                                    // if (val.value == true) {
+                                    //   phoneAuthCheck = true;
+                                    //   await phoneAuth(countries[phcode]
+                                    //           ['dial_code'] +
+                                    //       phnumber);
+                                    //
+                                    //   navigate();
+                                    // } else {
                                       phoneAuthCheck = false;
                                       navigate();
-                                    }
+                                  //  }
                                     setState(() {
                                       _isLoading = false;
                                     });
